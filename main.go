@@ -72,14 +72,15 @@ func findSearchInFileInsideZip(filename, search string, caseInsensitive bool, pr
 			}
 
 			datString := string(dat)
-			if strings.Contains(datString, search) {
-				fmt.Println(strings.Replace(filename, " ", "\\ ", -1))
-			}
-
 			if caseInsensitive && strings.Contains(
 				strings.ToLower(datString),
 				strings.ToLower(search),
 			) {
+				fmt.Println(strings.Replace(filename, " ", "\\ ", -1))
+				continue
+			}
+			
+			if strings.Contains(datString, search) {
 				fmt.Println(strings.Replace(filename, " ", "\\ ", -1))
 			}
 		}
